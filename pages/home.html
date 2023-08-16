@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script> 
+
+        <link rel="stylesheet" href="../css/roulette.css">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/blackjack.css">
+
+        <title>Home</title>
+    </head>
+    <body>
+        
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+            <!-- Roulette -->
+            <div id="roulette" class="w-64 h-64 rounded-full relative">
+                <div class="pizza-slice" id="slice1"></div>
+                <div class="pizza-slice" id="slice2"></div>
+                <div class="pizza-slice" id="slice3"></div>
+                <div class="pizza-slice" id="slice4"></div>
+            </div>
+
+            <!-- Ticket Count & Spin Button -->
+            <div class="mt-4 flex justify-center items-center">
+                <div>
+                    <label for="ticketCount" class="block text-sm font-medium text-gray-700">Ticket Count</label>
+                    <input type="number" id="ticketCount" class="mt-1 p-2 border rounded-md">
+                </div>
+                <button id="spinBtn" class="bg-blue-500 text-white px-6 py-2 rounded-lg">Spin</button>
+            </div>
+        </div>
+        <nav>
+            <span id="currency">$5000</span>
+            <h1 id="username">Username</h1>
+            <ul>
+                <li>How to play</li>
+            </ul>
+        </nav>
+        <main>
+            <div class="blackjack-home">
+                <div class="blackjack-img">
+                    <img class="noace" src="../img/J-S.png">
+                    <img class="ace" src="../img/A-H.png">
+                </div>
+            </div>
+            <div class="slot-home">
+                <div class="slot-img">
+                    <img class="slot-machine" src="../img/slots.png">
+                </div>
+            </div>
+            <div class="dice-home">
+                <div class="dice-img">
+                    <img class="dice1" src="../img/dice.png">
+                    <img class="dice2" src="../img/dice.png">
+                </div>
+            </div>
+        </main>
+        <section class="modal">
+            <div id="blackjack-game" class="blackjack-game">
+                <h2>Dealer: <span id="dealer-sum"></span></h2>
+                <div id="dealer-cards">
+                    <img id="hidden" src="../img/BACK.png">
+                </div>
+                
+                <h2>Player: <span id="your-sum"></span></h2>
+                <div id="your-cards"></div>
+                <h2 id="results"></h2>
+                <div class="blackjack-buttons">
+                    <button id="hit">Hit</button>
+                    <button id="restart">&#8634;</button>
+                    <button id="stay">Stand</button>
+                </div>            
+            </div>
+        </section>
+        
+
+        <!-- jQuery 3.7.0 minified -->
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js" 
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" 
+        crossorigin="anonymous"></script>
+
+        <script src="../js/roulette.js"></script>
+        <script src="../js/blackjack.js"></script>
+        <script src="../js/style.js"></script>
+        <script src="../js/showuser.js"></script>
+    </body>
+</html>
