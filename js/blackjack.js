@@ -197,6 +197,7 @@ $('#restart').on('mouseenter', function() {
     checkUserTickets();
 });
 
+//POST METHOD TO WRITE GAMES TO CSV FILE
 function writeGameResultToCSV(result) {
     const currentDate = new Date();
     const formattedDate = currentDate.toLocaleDateString();
@@ -215,6 +216,40 @@ function writeGameResultToCSV(result) {
         }
     });
 }
+
+//GET METHOD TO READ GAMES FROM CSV FILE
+function showGameResults() {
+    $.ajax({
+        url: 'http://localhost:3000/getGameResults',
+        method: 'GET',
+        dataType: 'json',
+        success: function(gameResults) {
+            const resultsContainer = document.getElementById('game-results-container');
+            resultsContainer.innerHTML = '';
+
+            for (let i = 1; i < gameResults.length - 1; i++) {
+                const result = gameResults[i];
+                const resultDiv = document.createElement('div');
+                resultDiv.textContent = `${result.date} ${result.time}: ${result.result}`;
+                resultsContainer.appendChild(resultDiv);
+            }
+            resultsContainer.style.display = 'block';
+        },
+        error: function(error) {
+            console.error("Error en la solicitud AJAX: ", error);
+        }
+    });
+}
+
+function hideGameResults() {
+    const resultsContainer = document.getElementById('game-results-container');
+    resultsContainer.style.display = 'none'; // Ocultar los resultados
+}
+
+const showResults = document.getElementById("game-results");
+
+showResults.addEventListener("mouseenter", showGameResults);
+showResults.addEventListener("mouseleave", hideGameResults);;
 
 
 function getValue(card) {

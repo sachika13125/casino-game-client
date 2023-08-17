@@ -21,7 +21,7 @@
             <span id="currency">$5000</span>
             <h1 id="username">Username</h1>
             <ul>
-                <li>How to play</li>
+                <li class="navcomponent">How to play</li>
             </ul>
         </nav>
         <main>
@@ -44,6 +44,10 @@
             </div>
         </main>
         <section class="modal">
+            <div class="game-results" id="game-results">
+                <div id="game-results-container"></div>
+                <h1 id="show-results" class="text-white font-bold py-2 px-4 rounded">Show Last Games</h1>
+            </div>
             <div id="blackjack-game" class="blackjack-game">
                 <h2>Dealer: <span id="dealer-sum"></span></h2>
                 <div id="dealer-cards">
@@ -72,6 +76,7 @@
                 <button id="reset-button">Reset</button>
               </div>
         </section>
+        
 
         <!-- jQuery 3.7.0 minified -->
         <script src="https://code.jquery.com/jquery-3.7.0.min.js" 
@@ -83,5 +88,6 @@
         <script src="../js/style.js"></script>
         <script src="../js/showuser.js"></script>
         <script src="../js/dice.js"></script>
+        <script src="../js/component.js"></script>
     </body>
 </html>

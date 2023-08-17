@@ -28,6 +28,19 @@ $(document).ready(function() {
         }
     );
 });
+
+const blackjackContainer = document.querySelector('.blackjack-home');
+const diceContainer = document.querySelector('.dice-home');
+const modal = document.querySelector('.modal');
+const modal2 = document.querySelector('.modal2');
+
+blackjackContainer.addEventListener('click', () => {
+  modal.scrollIntoView({ behavior: 'smooth' });
+});
+
+diceContainer.addEventListener('click', () => {
+  modal2.scrollIntoView({ behavior: 'smooth' });
+});
 // const rouletteImg = $('.roulette-img');
 // let totalRotation = 0;
 
