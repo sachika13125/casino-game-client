@@ -133,7 +133,7 @@ function checkGameResult(playerWin) {
             getUsersData();
         },
         error: function(error) {
-            console.error("Error en la solicitud AJAX: ", error);
+            console.error("Error requesting AJAX: ", error);
         }
     });
 }
@@ -148,35 +148,54 @@ function checkUserTickets() {
             const user = data[newUsername]; 
 
             if (user && user.tickets === 0) {
-                $('#hit').prop('disabled', true);
-                $('#stay').prop('disabled', true);
-                $('#restart').prop('disabled', true);
-                $('#hit').on('mouseenter', function() {
-                    $('#currency').addClass('shake-animation');
-                    setTimeout(function() {
-                        $('#currency').removeClass('shake-animation');
-                    }, 300);
-                });
-                $('#stay').on('mouseenter', function() {
-                    $('#currency').addClass('shake-animation');
-                    setTimeout(function() {
-                        $('#currency').removeClass('shake-animation');
-                    }, 500);
-                });
-                $('#restart').on('mouseenter', function() {
-                    $('#currency').addClass('shake-animation');
-                    setTimeout(function() {
-                        $('#currency').removeClass('shake-animation');
-                    }, 500);
-                });
+              $('#hit').prop('disabled', true);
+              $('#stay').prop('disabled', true);
+              $('#restart').prop('disabled', true);
+              $('#hit').on('mouseenter', function() {
+                  $('#currency').addClass('shake-animation');
+                  setTimeout(function() {
+                      $('#currency').removeClass('shake-animation');
+                  }, 300);
+              });
+              $('#stay').on('mouseenter', function() {
+                  $('#currency').addClass('shake-animation');
+                  setTimeout(function() {
+                      $('#currency').removeClass('shake-animation');
+                  }, 500);
+              });
+              $('#restart').on('mouseenter', function() {
+                  $('#currency').addClass('shake-animation');
+                  setTimeout(function() {
+                      $('#currency').removeClass('shake-animation');
+                  }, 500);
+              });
 
-            }
+          } else {
+              $('#hit').prop('disabled', false);
+              $('#stay').prop('disabled', false);
+              $('#restart').prop('disabled', false);
+              $('#currency').removeClass('shake-animation');
+
+              $('#hit').off('mouseenter');
+              $('#stay').off('mouseenter');
+              $('#restart').off('mouseenter');
+          }
         },
         error: function(error) {
-            console.error("Error en la solicitud AJAX: ", error);
+            console.error("Error requesting AJAX: ", error);
         }
     });
 }
+
+$('#hit').on('mouseenter', function() {
+    checkUserTickets();
+});
+$('#stay').on('mouseenter', function() {
+    checkUserTickets();
+});
+$('#restart').on('mouseenter', function() {
+    checkUserTickets();
+});
 
 function writeGameResultToCSV(result) {
     const currentDate = new Date();
@@ -192,7 +211,7 @@ function writeGameResultToCSV(result) {
             console.log(response);
         },
         error: function(error) {
-            console.error("Error en la solicitud AJAX: ", error);
+            console.error("Error requesting AJAX: ", error);
         }
     });
 }
@@ -227,7 +246,6 @@ function reduceAce(playerSum, playerAceCount) {
 }
 
 function restartGame() {
-    // Reiniciar variables y propiedades
     dealerSum = 0;
     yourSum = 0;
     dealerAceCount = 0;
@@ -235,11 +253,9 @@ function restartGame() {
     hidden = "";
     canHit = true;
 
-    // Vaciar el contenido actual del contenedor
     var blackjackGameContainer = document.getElementById("blackjack-game");
     blackjackGameContainer.innerHTML = "";
 
-    // Agregar el contenido inicial del juego
     var initialContent = `
         <h2>Dealer: <span id="dealer-sum"></span></h2>
         <div id="dealer-cards">
@@ -256,10 +272,8 @@ function restartGame() {
     `;
     blackjackGameContainer.innerHTML = initialContent;
 
-    // Volver a iniciar el juego
     startGame();
     
-    // Volver a asignar el evento de clic al botón "Restart"
     document.getElementById("restart").addEventListener("click", restartGame);
 }
 
