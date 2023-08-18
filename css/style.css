@@ -149,6 +149,13 @@ main div {
     text-align: center;
     background-color: black;
 }
+
+.footer {
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
 /* .roulette-img img {
     width: 250px;
     transition: all 0.4s, transform 1s cubic-bezier(.68,.92,.33,1.28);
